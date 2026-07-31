@@ -30,15 +30,15 @@ jobs:
 
       # 2. 建立 Docker Image (注意這裡加上了你的 Docker Hub 帳號作為前綴)
       - name: Build Docker Image
-        run: docker build -t 你的DockerHub帳號/my-app:v1 .
+        run: docker build -t anthony963741/my-app:v1 .
 
       # 3. 測試執行容器
       - name: Test Docker Container
         run: |
-          docker run -d --name test-app -p 8080:8080 你的DockerHub帳號/my-app:v1
+          docker run -d --name test-app -p 8080:8080 anthony963741/my-app:v1
           sleep 5
           curl http://localhost:8080/ || exit 1
 
       # 4. 自動推送到 Docker Hub 雲端
       - name: Push Docker Image to Docker Hub
-        run: docker push 你的DockerHub帳號/my-app:v1
+        run: docker push anthony963741/my-app:v1
